@@ -190,6 +190,14 @@ Push all your commits to `origin` and let us know when we can pull
 
 ---
 
+## AI
+
+Here is what very specific LLM prompts produced: https://youtu.be/nluEqXetQLs
+
+**Please remember**, should you be invited to a technical interview, you will asked about your code so take note of the AI solutions you submit to us. You have to understand all the code you submit.
+
+---
+
 ## Questions?
 
 **Unclear requirements?** Make a reasonable assumption and document it in your submission notes.
