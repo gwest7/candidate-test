@@ -14,9 +14,9 @@ app.get('/api/hello', (req: Request, res: Response) => {
 
 // Streaming endpoint - sends chunks every 0.3 seconds for 5 seconds
 app.get('/api/stream', (req: Request, res: Response) => {
-  res.setHeader('Content-Type', 'application/x-ndjson');
+  res.setHeader('Content-Type', 'application/x-ndjson'); // newline-delimited JSON
   res.setHeader('Cache-Control', 'no-cache');
-  res.setHeader('Connection', 'keep-alive');
+  res.setHeader('Connection', 'keep-alive'); // multiple writes
 
   let counter = 0;
   const maxDuration = 3000; // 3 seconds
