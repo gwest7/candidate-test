@@ -12,6 +12,41 @@ app.get('/api/hello', (req: Request, res: Response) => {
   res.json({ message: 'Hello from Express!' });
 });
 
+// Streaming endpoint - sends chunks every 0.3 seconds for 5 seconds
+app.get('/api/stream', (req: Request, res: Response) => {
+  res.setHeader('Content-Type', 'application/x-ndjson');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+
+  let counter = 0;
+  const maxDuration = 3000; // 3 seconds
+  const interval = 100; // 0.1 seconds
+  const startTime = Date.now();
+
+  const intervalId = setInterval(() => {
+    const elapsed = Date.now() - startTime;
+    counter++;
+
+    const chunk = {
+      type: 'progress',
+      progress: counter,
+    };
+
+    res.write(JSON.stringify(chunk) + '\n');
+
+    // Check if we've exceeded the max duration
+    if (elapsed >= maxDuration) {
+      clearInterval(intervalId);
+      const conclusionChunk = {
+        type: 'conclusion',
+        conclusion: `Streaming completed after ${counter} updates`,
+      };
+      res.write(JSON.stringify(conclusionChunk) + '\n');
+      res.end();
+    }
+  }, interval);
+});
+
 // Add more routes here as needed
 // app.get('/api/example', (req: Request, res: Response) => {
 //   res.json({ data: 'example' });
