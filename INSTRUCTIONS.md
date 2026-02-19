@@ -5,7 +5,10 @@
 You're building a progressive restaurant discovery page that loads data from an external API. Rather than waiting for all data to load, we want to stream results to the user as they become available.
 
 **Time limit:** 30-45 minutes
+
 **What we're testing:** Concurrency control, streaming responses, progressive UI updates, and code quality.
+
+**PLEASE:** Read through all the instructions and plan your approach before you start. Plan your development approach and commit after every meaningful code change with a detailed commit messages.
 
 ---
 
@@ -26,7 +29,7 @@ You're building a progressive restaurant discovery page that loads data from an 
 **If you chose Private:** Add `gwest7` as a collaborator
 - Go to Settings → Collaborators → Add `gwest7`
 
-**Option B: Manual Clone (If template unavailable)**
+**Option B: Manual Clone**
 
 ```bash
 # Clone the base repo
@@ -61,7 +64,7 @@ The app should start with:
 
 ### 3. Explore the Example
 
-Visit `http://localhost:3000` and click "Load Stream Data"
+Visit `http://localhost:3000` and click "Start Stream"
 
 This demonstrates the **chunked JSON streaming pattern** you'll use. Check:
 - **Server:** `src/server/index.ts` - `/api/stream` endpoint
@@ -77,23 +80,25 @@ This demonstrates the **chunked JSON streaming pattern** you'll use. Check:
 
 **Requirements:**
 
-1. **Load all restaurants** from `restaurants.ts`
+1. **Import all restaurants** from `restaurants.ts`
+   - These restaurant names should form the base of the HTML table
 
 2. **Fetch details** for each restaurant using `fetchRestaurantDetails(id)` from `api.ts`
 
 3. **Limit concurrency** to 5 simultaneous API calls
-   - Don't fetch all 100 at once (will overload the API)
+   - Don't fetch all 134 at once (will overload the API)
    - Don't fetch one-by-one (too slow)
    - Keep exactly 5 active requests at any time
+   - Create `loader.ts` for this
 
-4. **Stream results** to the client as each restaurant loads
+4. **Stream updates** to the client
    - Don't wait for all to finish before responding
-   - Send each restaurant immediately when its details arrive
+   - Send each restaurant update when it arrives
 
 5. **Update the client** (`src/client/main.ts`)
    - Call your new `/api/restaurants/stream` endpoint
-   - Display restaurants as they arrive (progressive rendering)
-   - Show loading progress: "Loaded 15/100 restaurants"
+   - Display restaurant updates as they arrive (progressive rendering)
+   - Show loading progress: "Completed 15/134 requests"
    - Update the DOM incrementally, not in batches
 
 **Acceptance Criteria:**
@@ -102,7 +107,7 @@ This demonstrates the **chunked JSON streaming pattern** you'll use. Check:
 ✅ Never more than 5 concurrent API requests  
 ✅ Client displays restaurants as they arrive  
 ✅ Progress indicator updates in real-time  
-✅ All 134 restaurants eventually load (or show errors)  
+✅ All 134 restaurants' details eventually load (or show errors)  
 ✅ Handles API failures gracefully (some requests may fail, especially after hours)  
 
 ---
@@ -136,6 +141,7 @@ Extend your loader to also fetch restaurant menus:
 - ✅ **Streaming:** Do results appear progressively or in batches?
 - ✅ **Error handling:** What happens when API calls fail?
 - ✅ **Performance:** Is the approach efficient?
+- ✅ **Testing:** Is the loader easily testable with automation
 
 ### Process
 - ✅ **Commits:** Do they show your thought process?

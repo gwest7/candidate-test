@@ -6,9 +6,10 @@ interface ApiResponse {
 }
 
 interface StreamChunk {
-  type: 'progress' | 'conclusion';
+  type: 'progress' | 'conclusion'; // consider adding 'initial' and replacing 'progress' with 'details-update' and 'menu-update'
   progress?: number;
   conclusion?: string;
+  // add more fields here as needed for different chunk types
 }
 
 const testBtn = document.getElementById('testBtn') as HTMLButtonElement;
@@ -61,7 +62,7 @@ streamBtn?.addEventListener('click', async () => {
         if (line) {
           try {
             const chunk: StreamChunk = JSON.parse(line);
-            updateDOM(chunk);
+            chunkProcessor(chunk);
           } catch (parseError) {
             console.error('Failed to parse chunk:', line, parseError);
           }
@@ -78,7 +79,7 @@ streamBtn?.addEventListener('click', async () => {
   }
 });
 
-function updateDOM(chunk: StreamChunk) {
+function chunkProcessor(chunk: StreamChunk) {
   if (chunk.type === 'progress' && chunk.progress !== undefined) {
     progressText.textContent = `${chunk.progress} updates received`;
   } else if (chunk.type === 'conclusion' && chunk.conclusion) {
