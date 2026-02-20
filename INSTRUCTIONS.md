@@ -8,7 +8,7 @@ You're building a progressive restaurant discovery page that loads data from an 
 
 **What we're testing:** Concurrency control, streaming responses, progressive UI updates, and code quality.
 
-**PLEASE:** Read through all the instructions and plan your approach before you start. Plan your development approach and commit after every meaningful code change with a detailed commit messages.
+**PLEASE:** Read through all the instructions and plan your approach before you start. As you work through your plan, commit after every meaningful code change with detailed commit messages. To be honest, AI will produce the best result **IF** your prompts are well worded and well planned. Please take note of your prompts and include them in the submission.
 
 ---
 
@@ -147,6 +147,7 @@ Extend your loader to also fetch restaurant menus:
 - ✅ **Commits:** Do they show your thought process?
 - ✅ **Prioritization:** Did you get basics working before attempting bonus?
 - ✅ **Time management:** Working solution in 30-45 minutes?
+- ✅ **LLM:** How well are your prompts worded?
 
 ---
 
@@ -177,10 +178,11 @@ Push all your commits to `origin` and let us know when we can pull
 
 **If your repo is private:** Confirm you've added `gwest7` as a collaborator
 
-**Brief explanation (3-5 sentences):**
+**Tell us how it went:**
 - Your approach to concurrency control
 - How you handled streaming/progressive updates
 - Any trade-offs you made
+- Your use of AI (actual LLM prompts will be appreciated)
 
 **What you'd improve with more time:**
 - What would you add/change with another 30 minutes?
@@ -189,18 +191,9 @@ Push all your commits to `origin` and let us know when we can pull
 
 ---
 
-## Tips for Success
-
-* Before you start, make a plan you can stick to
-* Commit after each meaningful code change
-
----
-
 ## AI
 
 Here is what very specific LLM prompts produced: https://youtu.be/nluEqXetQLs and https://youtu.be/hn_HUOyS6mk
-
-**Please remember**, should you be invited to a technical interview, you will asked about your code so take note of the AI solutions you submit to us. You have to understand all the code you submit.
 
 ---
 
@@ -208,7 +201,7 @@ Here is what very specific LLM prompts produced: https://youtu.be/nluEqXetQLs an
 
 **Unclear requirements?** Make a reasonable assumption and document it in your submission notes.
 
-**API not working?** Let us know in your submission - we can verify and review our access logs.
+**API not working?** Let us know in your submission - we can verify and review our access logs. Depending on the time of day, some endpoints will respond negatively.
 
 **Running out of time?** Submit what you have! We value working basics over incomplete advanced features.
 
